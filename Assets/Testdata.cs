@@ -60,7 +60,7 @@ public class Testdata : MonoBehaviour
 
         }
         byte[] byteData = System.Text.Encoding.ASCII.GetBytes(jsonString.ToCharArray());
-        UnityWebRequest unityWebRequest = new UnityWebRequest("http://localhost:8080/player/register/", "PUT"); //ยิง request เป็น put เพื่อสร้างข้อมูลไปยังเซิฟเวอร์ 
+        UnityWebRequest unityWebRequest = new UnityWebRequest("http://localhost:8080/player/register/:id", "PUT"); //ยิง request เป็น put เพื่อสร้างข้อมูลไปยังเซิฟเวอร์ (จำเป็นต้องมี _id จาก database ถึงจะ อัพเดทข้อมูลได้)
         unityWebRequest.uploadHandler = new UploadHandlerRaw(byteData);
         unityWebRequest.SetRequestHeader("Content-Type", "application/json");
         yield return unityWebRequest.Send();
